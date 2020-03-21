@@ -49,8 +49,8 @@ def toItem(listing):
         url=BASE_URL+url,
         title=title,
         tags=tags,
-        content_html=listing.prettify(),
-        date_published=date_published
+        date_published=date_published,
+        content_text=title
     )
 
 def getRecentItems(category=""):

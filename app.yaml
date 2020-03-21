@@ -1,0 +1,5 @@
+service: itsnicethat-feed
+runtime: python37
+handlers:
+  - url: .*
+    script: auto

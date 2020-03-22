@@ -52,4 +52,4 @@ def page_to_items(page):
     raw_items = soup.findAll(class_="listing-item")
     return [raw_item_to_item(s) for s in raw_items[:MAX_ITEMS]]
 
-app = jfw.initialize(BASE_URL, page_to_items, MAX_ITEMS)
+app = jfw.initialize("It's Nice That", BASE_URL, page_to_items, MAX_ITEMS)

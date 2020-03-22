@@ -1,4 +1,4 @@
-from bottle import route, request, response, run, template, Bottle, static_file, HTTPError
+from bottle import Bottle, route, response, static_file, HTTPError
 import requests
 from bs4 import BeautifulSoup as bs
 import jsonfeed as jf

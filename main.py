@@ -2,8 +2,6 @@ from bottle import route, request, response, run, template, Bottle, static_file,
 import requests
 from bs4 import BeautifulSoup as bs
 import jsonfeed as jf
-# import datetime from datetime as dt
-
 from datetime import datetime as dt, timedelta
 
 BASE_URL = "https://www.itsnicethat.com"
@@ -16,7 +14,9 @@ ERROR_MESSAGES = {
 def marshalItsNiceThatHoursAgo(string_date):
     date_published = dt.utcnow()
     try:
-        hours_ago = int(string_date.split()[0])
+        first_token = string_date.split()[0]
+        # Sometimes it's "a day ago."
+        hours_ago = 1 if first_token == "a" else int(string_date.split()[0])
         date_published -= timedelta(hours=hours_ago)
     except ValueError:
         print("Defauling to NOW:", string_date)
@@ -85,9 +85,6 @@ def favicon():
 def entry():
     return getRecentItems()
 
-# Serve Atlas of Places categories. Supported categories at this time:
-#   academia, architecture, cartography, cinema, essays, painting, photography,
-#   research
 @app.route('/<category>')
 def subset(category):
     return getRecentItems(category=category)

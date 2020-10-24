@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup as bs
 from datetime import datetime as dt, timedelta
 
 BASE_URL = "https://www.itsnicethat.com"
+BASE_URL_FORMAT = BASE_URL + "/{category}"
 MAX_ITEMS = 20
 
 # Tries to match e.g. '10 hours ago'; otherwise defaults to now.
@@ -52,4 +53,4 @@ def page_to_items(page):
     raw_items = soup.findAll(class_="listing-item")
     return [raw_item_to_item(s) for s in raw_items[:MAX_ITEMS]]
 
-app = jfw.initialize("It's Nice That", BASE_URL, page_to_items, MAX_ITEMS)
+app = jfw.initialize("It's Nice That", BASE_URL_FORMAT, page_to_items, MAX_ITEMS)

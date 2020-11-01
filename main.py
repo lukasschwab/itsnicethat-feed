@@ -53,4 +53,7 @@ def page_to_items(page):
     raw_items = soup.findAll(class_="listing-item")
     return [raw_item_to_item(s) for s in raw_items[:MAX_ITEMS]]
 
-app = jfw.initialize("It's Nice That", BASE_URL_FORMAT, page_to_items, MAX_ITEMS)
+# app = jfw.initialize("It's Nice That", BASE_URL_FORMAT, page_to_items, MAX_ITEMS)
+wrapper = jfw.JSONFeedWrapper("It's Nice That", BASE_URL_FORMAT, page_to_items, MAX_ITEMS)
+app = wrapper.as_bottle_app()
+target = wrapper.as_cloud_function()

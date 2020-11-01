@@ -17,3 +17,11 @@ deploy:
 
 open-prod:
 	gcloud app browse -s itsnicethat-feed
+
+# Targets for working with the cloud function.
+
+run-function:
+	functions-framework --source "main.py" --target "target"
+
+deploy-function: main.py requirements.txt
+	gcloud functions deploy "isnicethat-feed" --entry-point "target" --runtime "python37" --trigger-http 

@@ -1,3 +1,5 @@
+# app.yaml contains deployment metadata for deploying this project with Google
+# App Engine.
 service: itsnicethat-feed
 runtime: python37
 handlers:

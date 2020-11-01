@@ -55,5 +55,4 @@ def page_to_items(page):
 
 # app = jfw.initialize("It's Nice That", BASE_URL_FORMAT, page_to_items, MAX_ITEMS)
 wrapper = jfw.JSONFeedWrapper("It's Nice That", BASE_URL_FORMAT, page_to_items, MAX_ITEMS)
-app = wrapper.as_bottle_app()
 target = wrapper.as_cloud_function()
